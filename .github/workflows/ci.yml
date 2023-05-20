@@ -5,8 +5,17 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: echo hello world
+        run: echo HELLO WORLD! ✅
+        
   build:
+    needs: prepare
     runs-on: ubuntu-latest
     container: alpine:latest
     strategy:
